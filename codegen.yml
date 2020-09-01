@@ -1,0 +1,13 @@
+overwrite: true
+schema: "src/gqlschemas/*.graphql"
+documents: null
+scalars:
+    DateTime: Date
+    JSON: "{ [key: string]: any }"
+config:
+    contextType: ../context#Context
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-resolvers"

@@ -1,0 +1,72 @@
+{
+  "name": "gql-boilerplate",
+  "version": "1.0.0",
+  "description": "Nodejs GraphQL codegen boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "copy:package": "copyfiles package.json dist -f",
+    "copy:schema": "copyfiles src/gqlschemas/*.graphql dist/gqlschemas -f",
+    "build": "npm run generate && tsc && npm run copy:schema && npm run copy:package",
+    "build:production": "npm run prestart && npm prune --production",
+    "watch": "tsc --w",
+    "start": "node ./dist/index.js",
+    "start:prod": "node ./index.js",
+    "start:debug": "npm run build && node --inspect=5860 -r ts-node/register ./src/index.ts",
+    "start:watch": "nodemon",
+    "test": "echo \"No tests yet...\"",
+    "generate": "graphql-codegen"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "ignore": [
+      "src/generated",
+      "src/tests"
+    ],
+    "watch": [
+      "src",
+      ".env"
+    ],
+    "ext": "ts,graphql",
+    "exec": "npm run start:debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eedsilva/gql-boilerplate.git"
+  },
+  "keywords": [
+    "GraphQL",
+    "Typescript",
+    "NodeJS"
+  ],
+  "author": "Ed Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eedsilva/gql-boilerplate/issues"
+  },
+  "homepage": "https://github.com/eedsilva/gql-boilerplate#readme",
+  "dependencies": {
+    "@graphql-codegen/cli": "^1.16.3",
+    "apollo-datasource-rest": "^0.6.11",
+    "apollo-server": "^2.15.1",
+    "apollo-server-express": "^2.15.1",
+    "axios": "^0.19.2",
+    "azure-devops-node-api": "^9.0.1",
+    "dotenv": "^8.2.0",
+    "graphql": "^14.7.0",
+    "graphql-redis-subscriptions": "^2.2.1",
+    "ioredis": "^4.17.3",
+    "jwt-decode": "^2.2.0",
+    "memoizee": "^0.4.14",
+    "moment": "^2.27.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/typescript": "^1.16.3",
+    "@graphql-codegen/typescript-resolvers": "^1.16.3",
+    "@types/dotenv": "^6.1.1",
+    "@types/ioredis": "^4.17.0",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/memoizee": "^0.4.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  }
+}
