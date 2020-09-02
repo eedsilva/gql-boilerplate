@@ -1,5 +1,5 @@
-import { User } from "./utils/types";
-import { UserAPI } from "./dataSources/userAPI";
+import { User } from "./types";
+import { UserAPI } from "../dataSources/userAPI";
 
 export type Context = {
     dataSources: DataSources;
