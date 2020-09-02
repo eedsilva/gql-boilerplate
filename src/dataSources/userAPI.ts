@@ -1,5 +1,5 @@
 import { DataSource, DataSourceConfig } from "apollo-datasource";
-import { Context } from "../context";
+import { Context } from "../utils/context";
 import { User } from "../utils/types";
 
 export class UserAPI extends DataSource<Context> {
